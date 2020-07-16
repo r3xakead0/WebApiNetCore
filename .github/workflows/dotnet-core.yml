@@ -23,7 +23,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: dotnet publish
+    - name: Publish
       run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dotnetcorewebapp
     - name: Upload artifact
       uses: actions/upload-artifact@v2
@@ -34,3 +34,4 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: WebApiNetCore
+        path: ${{env.DOTNET_ROOT}}/dotnetcorewebapp
