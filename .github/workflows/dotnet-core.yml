@@ -24,12 +24,12 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: dotnet publish
-      run: dotnet publish -c Release -o dotnetcorewebapp
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dotnetcorewebapp
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: WebApiNetCore
-        path: "./dotnetcorewebapp"
+        path: ${{env.DOTNET_ROOT}}/dotnetcorewebapp
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
